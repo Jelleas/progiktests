@@ -1,55 +1,100 @@
 import checkpy.tests as t
 import checkpy.lib as lib
-import checkpy.assertlib as assertlib
+import checkpy.assertlib as asserts
 import re
 
-@t.test(0)
-def exactMario0(test):
-	test.test = lambda : not assertlib.contains(lib.outputOf(_fileName, [0]), "#")
-	test.description = lambda : "print een pyramide van 0 hoog"
-
-@t.test(1)
-def exactMario3(test):
-  test.test = lambda : assertlib.match(lib.outputOf(_fileName, [3]),
-    re.compile(".*"
-      "(  ##)[ ]*(\n)"
-      "( ###)[ ]*(\n)"
-      "(####)[ ]*"
-      ".*", re.MULTILINE))
-  test.description = lambda : "print een pyramide van 3 hoog"
-
-@t.test(2)
-def exactMario23(test):
-	test.test = lambda : assertlib.match(lib.outputOf(_fileName, [23]),
-    re.compile(".*"
-      "(                      ##)[ ]*(\n)"
-      "(                     ###)[ ]*(\n)"
-      "(                    ####)[ ]*(\n)"
-      "(                   #####)[ ]*(\n)"
-      "(                  ######)[ ]*(\n)"
-      "(                 #######)[ ]*(\n)"
-      "(                ########)[ ]*(\n)"
-      "(               #########)[ ]*(\n)"
-      "(              ##########)[ ]*(\n)"
-      "(             ###########)[ ]*(\n)"
-      "(            ############)[ ]*(\n)"
-      "(           #############)[ ]*(\n)"
-      "(          ##############)[ ]*(\n)"
-      "(         ###############)[ ]*(\n)"
-      "(        ################)[ ]*(\n)"
-      "(       #################)[ ]*(\n)"
-      "(      ##################)[ ]*(\n)"
-      "(     ###################)[ ]*(\n)"
-      "(    ####################)[ ]*(\n)"
-      "(   #####################)[ ]*(\n)"
-      "(  ######################)[ ]*(\n)"
-      "( #######################)[ ]*(\n)"
-      "(########################)[ ]*"
-      ".*", re.MULTILINE))
-	test.description = lambda : "print een pyramide van 23 hoog"
-
-
 @t.test(10)
-def handlesWrongInput(test):
-	test.test = lambda : not assertlib.contains(lib.outputOf(_fileName, [-100, 100, 24, 0]), "#")
-	test.description = lambda : "handelt een verkeerde input van -100, 100 en 24 af"
+def height0(test):
+	def testMethod():
+		inputArgs = [0]
+		output = lib.outputOf(_fileName, inputArgs)
+		return not asserts.contains(output, "#")
+
+	test.test = testMethod
+	test.description = lambda : "handles a height of 0 correctly"
+
+@t.test(20)
+def height1(test):
+	def testMethod():
+		inputArgs = [1]
+		output = lib.outputOf(_fileName, inputArgs)
+		regex = re.compile(".*"
+	      "(##)[ ]*"
+	      ".*", re.MULTILINE)
+		return asserts.match(output, regex)
+
+	test.test = testMethod
+	test.description = lambda : "handles a height of 1 correctly"
+
+@t.test(30)
+def height2(test):
+	def testMethod():
+		inputArgs = [2]
+		output = lib.outputOf(_fileName, inputArgs)
+		regex = re.compile(".*"
+			"( ##)[ ]*(\n)"
+			"(###)[ ]*"
+			".*", re.MULTILINE)
+		return asserts.match(output, regex)
+
+	test.test = testMethod
+	test.description = lambda : "handles a height of 2 correctly"
+
+@t.test(30)
+def height23(test):
+	def testMethod():
+		inputArgs = [23]
+		output = lib.outputOf(_fileName, inputArgs)
+		regex = re.compile(".*"
+			"(                      ##)[ ]*(\n)"
+			"(                     ###)[ ]*(\n)"
+			"(                    ####)[ ]*(\n)"
+			"(                   #####)[ ]*(\n)"
+			"(                  ######)[ ]*(\n)"
+			"(                 #######)[ ]*(\n)"
+			"(                ########)[ ]*(\n)"
+			"(               #########)[ ]*(\n)"
+			"(              ##########)[ ]*(\n)"
+			"(             ###########)[ ]*(\n)"
+			"(            ############)[ ]*(\n)"
+			"(           #############)[ ]*(\n)"
+			"(          ##############)[ ]*(\n)"
+			"(         ###############)[ ]*(\n)"
+			"(        ################)[ ]*(\n)"
+			"(       #################)[ ]*(\n)"
+			"(      ##################)[ ]*(\n)"
+			"(     ###################)[ ]*(\n)"
+			"(    ####################)[ ]*(\n)"
+			"(   #####################)[ ]*(\n)"
+			"(  ######################)[ ]*(\n)"
+			"( #######################)[ ]*(\n)"
+			"(########################)[ ]*(\n)"
+			".*", re.MULTILINE)
+		return asserts.match(output, regex)
+
+	test.test = testMethod
+	test.description = lambda : "handles a height of 23 correctly"
+
+@t.test(50)
+def rejectMinus1(test):
+	def testMethod():
+		inputArgs = [-1, 0]
+		output = lib.outputOf(_fileName, inputArgs)
+		return not asserts.contains(output, "#")
+
+	test.test = testMethod
+	test.description = lambda : "rejects a height of -1 and then accepts a height of 0"
+
+@t.test(60)
+def reject24(test):
+	def testMethod():
+		inputArgs = [24, 2]
+		output = lib.outputOf(_fileName, inputArgs)
+		regex = re.compile(".*"
+			"( ##)[ ]*(\n)"
+			"(###)[ ]*"
+			".*", re.MULTILINE)
+		return asserts.match(output, regex)
+
+	test.test = testMethod
+	test.description = lambda : "rejects a height of 24 and then accepts a height of 2"

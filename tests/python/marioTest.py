@@ -6,8 +6,8 @@ import re
 @t.test(10)
 def height0(test):
 	def testMethod():
-		inputArgs = [0]
-		output = lib.outputOf(_fileName, inputArgs)
+		stdinArgs = [0]
+		output = lib.outputOf(_fileName, stdinArgs)
 		return not asserts.contains(output, "#")
 
 	test.test = testMethod
@@ -16,8 +16,8 @@ def height0(test):
 @t.test(20)
 def height1(test):
 	def testMethod():
-		inputArgs = [1]
-		output = lib.outputOf(_fileName, inputArgs)
+		stdinArgs = [1]
+		output = lib.outputOf(_fileName, stdinArgs)
 		regex = re.compile(".*"
 	      "(##)[ ]*"
 	      ".*", re.MULTILINE)
@@ -29,8 +29,8 @@ def height1(test):
 @t.test(30)
 def height2(test):
 	def testMethod():
-		inputArgs = [2]
-		output = lib.outputOf(_fileName, inputArgs)
+		stdinArgs = [2]
+		output = lib.outputOf(_fileName, stdinArgs)
 		regex = re.compile(".*"
 			"( ##)[ ]*(\n)"
 			"(###)[ ]*"
@@ -43,8 +43,8 @@ def height2(test):
 @t.test(30)
 def height23(test):
 	def testMethod():
-		inputArgs = [23]
-		output = lib.outputOf(_fileName, inputArgs)
+		stdinArgs = [23]
+		output = lib.outputOf(_fileName, stdinArgs)
 		regex = re.compile(".*"
 			"(                      ##)[ ]*(\n)"
 			"(                     ###)[ ]*(\n)"
@@ -78,8 +78,8 @@ def height23(test):
 @t.test(50)
 def rejectMinus1(test):
 	def testMethod():
-		inputArgs = [-1, 0]
-		output = lib.outputOf(_fileName, inputArgs)
+		stdinArgs = [-1, 0]
+		output = lib.outputOf(_fileName, stdinArgs)
 		return not asserts.contains(output, "#")
 
 	test.test = testMethod
@@ -88,8 +88,8 @@ def rejectMinus1(test):
 @t.test(60)
 def reject24(test):
 	def testMethod():
-		inputArgs = [24, 2]
-		output = lib.outputOf(_fileName, inputArgs)
+		stdinArgs = [24, 2]
+		output = lib.outputOf(_fileName, stdinArgs)
 		regex = re.compile(".*"
 			"( ##)[ ]*(\n)"
 			"(###)[ ]*"

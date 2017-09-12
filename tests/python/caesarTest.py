@@ -7,8 +7,8 @@ def key1(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "1"]
-        inputArgs = ["a"]
-        output = lib.outputOf(_fileName, inputArgs)
+        stdinArgs = ["a"]
+        output = lib.outputOf(_fileName, stdinArgs)
         line = lib.getLine(output, 0)
         return asserts.contains(line, "b")
 
@@ -20,8 +20,8 @@ def key23(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "23"]
-        inputArgs = ["barfoo"]
-        output = lib.outputOf(_fileName, inputArgs)
+        stdinArgs = ["barfoo"]
+        output = lib.outputOf(_fileName, stdinArgs)
         line = lib.getLine(output, 0)
         return asserts.contains(line, "yxocll")
 
@@ -33,8 +33,8 @@ def key3(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "3"]
-        inputArgs = ["BARFOO"]
-        output = lib.outputOf(_fileName, inputArgs)
+        stdinArgs = ["BARFOO"]
+        output = lib.outputOf(_fileName, stdinArgs)
         line = lib.getLine(output, 0)
         return asserts.contains(line, "EDUIRR")
 
@@ -46,8 +46,8 @@ def key4(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "4"]
-        inputArgs = ["BaRFoo"]
-        output = lib.outputOf(_fileName, inputArgs)
+        stdinArgs = ["BaRFoo"]
+        output = lib.outputOf(_fileName, stdinArgs)
         line = lib.getLine(output, 0)
         return asserts.contains(line, "FeVJss")
 
@@ -59,8 +59,8 @@ def key65(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "65"]
-        inputArgs = ["barfoo"]
-        output = lib.outputOf(_fileName, inputArgs)
+        stdinArgs = ["barfoo"]
+        output = lib.outputOf(_fileName, stdinArgs)
         line = lib.getLine(output, 0)
         return asserts.contains(line, "onesbb")
 
@@ -72,8 +72,8 @@ def invalidInput(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py"]
-        inputArgs = ["foo"]
-        output = lib.outputOf(_fileName, inputArgs)
+        stdinArgs = ["foo"]
+        output = lib.outputOf(_fileName, stdinArgs)
         line = lib.getLine(output, 0)
         return asserts.contains(line, "usage: python caesar.py key")
 

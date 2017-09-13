@@ -49,10 +49,12 @@ def solves3x3(test):
         sys.argv = ["fifteen.py", "3"]
         stdinArgs = ["3","4","1","2","5","8","7","6","4","1","2","5","8","7","6","4","1","2","4","1","2","3","5","4","7","6","1","2","3","7","4","8","6","4","8","5","7","8","5","6","4","5","6","7","8","6","5","4","7","8"]
         output = lib.outputOf(_fileName, stdinArgs)
-        return asserts.contains(output, "You have won!")
+        failInfo = output.split("\n")[-5:]
+        return asserts.contains(output, "You have won!"), failInfo
 
     test.test = testMethod
     test.description = lambda : "solves a 3x3 game"
+    test.fail = lambda info : "last 5 lines of output:\n{}".format("\n".join(info))
 
 @t.test(50)
 def solves4x4(test):
@@ -61,11 +63,12 @@ def solves4x4(test):
         sys.argv = ["fifteen.py", "4"]
         stdinArgs = ["4","5","6","1","2","4","5","6","1","2","3","7","11","10","9","1","2","3","4","5","6","8","1","2","3","4","7","11","10","9","14","13","12","1","2","3","4","14","13","12","1","2","3","4","14","13","12","1","2","3","4","12","9","15","1","2","3","4","12","9","13","14","9","13","14","7","5","9","13","14","15","10","11","5","9","13","7","11","5","9","13","7","11","15","10","5","9","13","15","11","8","6","7","8","14","12","6","7","8","14","12","6","7","8","14","15","11","10","6","7","8","12","15","11","10","15","11","14","12","11","15","10","14","15","11","12"]
         output = lib.outputOf(_fileName, stdinArgs)
-        return asserts.contains(output, "You have won!")
+        failInfo = output.split("\n")[-6:]
+        return asserts.contains(output, "You have won!"), failInfo
 
     test.test = testMethod
     test.description = lambda : "solves a 4x4 game"
-
+    test.fail = lambda info : "last 6 lines of output:\n{}".format("\n".join(info))
 
 @t.test(60)
 def invalidInput(test):

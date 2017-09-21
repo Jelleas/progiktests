@@ -74,24 +74,34 @@ def solves4x4(test):
 def invalidInput(test):
     def testMethod():
         import sys
-        sys.argv = ["vigenere.py"]
-        stdinArgs = ["foo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        sys.argv = ["fifteen.py"]
+        output = lib.outputOf(_fileName)
         line = lib.getLine(output, 0)
-        return asserts.contains(line, "usage: python vigenere.py keyword")
+        return asserts.contains(line, "usage: python fifteen.py size")
 
     test.test = testMethod
     test.description = lambda : "handles lack of argv[1]"
 
 @t.test(70)
-def tooMuchInput(test):
+def argv1BiggerThan9(test):
     def testMethod():
         import sys
-        sys.argv = ["vigenere.py", "foo", "bar"]
-        stdinArgs = ["foo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        sys.argv = ["fifteen.py", "10"]
+        output = lib.outputOf(_fileName)
         line = lib.getLine(output, 0)
-        return asserts.contains(line, "usage: python vigenere.py keyword")
+        return asserts.contains(line, "usage: python fifteen.py size")
 
     test.test = testMethod
-    test.description = lambda : "handles len(argv) > 2"
+    test.description = lambda : "handles argv[1] > 9"
+
+@t.test(80)
+def argv1SmallerThan0(test):
+    def testMethod():
+        import sys
+        sys.argv = ["fifteen.py", "-1"]
+        output = lib.outputOf(_fileName)
+        line = lib.getLine(output, 0)
+        return asserts.contains(line, "usage: python fifteen.py size")
+
+    test.test = testMethod
+    test.description = lambda : "handles argv[1] < 0"

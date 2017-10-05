@@ -1,23 +1,31 @@
 import checkpy.tests as t
 import checkpy.lib as lib
 import checkpy.assertlib as asserts
+import checkpy.exception as exception
 import re
 
 @t.test(10)
 def height0(test):
 	def testMethod():
-		stdinArgs = [0]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [0],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		return not asserts.contains(output, "#")
 
 	test.test = testMethod
 	test.description = lambda : "handles a height of 0 correctly"
 
+
 @t.test(20)
 def height1(test):
 	def testMethod():
-		stdinArgs = [1]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [1],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		regex = re.compile(".*"
 	      "(##)[ ]*"
 	      ".*", re.MULTILINE)
@@ -29,8 +37,11 @@ def height1(test):
 @t.test(30)
 def height2(test):
 	def testMethod():
-		stdinArgs = [2]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [2],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		regex = re.compile(".*"
 			"( ##)[ ]*(\n)"
 			"(###)[ ]*"
@@ -43,8 +54,11 @@ def height2(test):
 @t.test(30)
 def height23(test):
 	def testMethod():
-		stdinArgs = [23]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [23],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		regex = re.compile(".*"
 			"(                      ##)[ ]*(\n)"
 			"(                     ###)[ ]*(\n)"
@@ -78,8 +92,11 @@ def height23(test):
 @t.test(50)
 def rejectMinus1(test):
 	def testMethod():
-		stdinArgs = [-1, 0]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [-1, 0],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		return not asserts.contains(output, "#")
 
 	test.test = testMethod
@@ -88,8 +105,11 @@ def rejectMinus1(test):
 @t.test(60)
 def reject24(test):
 	def testMethod():
-		stdinArgs = [24, 2]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [24, 2],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		regex = re.compile(".*"
 			"( ##)[ ]*(\n)"
 			"(###)[ ]*"

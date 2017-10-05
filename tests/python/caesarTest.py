@@ -1,14 +1,18 @@
 import checkpy.tests as t
 import checkpy.lib as lib
 import checkpy.assertlib as asserts
+import checkpy.exception as exception
 
 @t.test(0)
 def key1(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "1"]
-        stdinArgs = ["a"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["a"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "b")
 
@@ -20,8 +24,11 @@ def key23(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "23"]
-        stdinArgs = ["barfoo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["barfoo"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "yxocll")
 
@@ -33,8 +40,11 @@ def key3(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "3"]
-        stdinArgs = ["BARFOO"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["BARFOO"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "EDUIRR")
 
@@ -46,8 +56,11 @@ def key4(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "4"]
-        stdinArgs = ["BaRFoo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["BaRFoo"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "FeVJss")
 
@@ -59,8 +72,11 @@ def key65(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py", "65"]
-        stdinArgs = ["barfoo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["barfoo"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "onesbb")
 
@@ -72,8 +88,12 @@ def invalidInput(test):
     def testMethod():
         import sys
         sys.argv = ["caesar.py"]
-        stdinArgs = ["foo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["foo"],
+            overwriteAttributes = [("__name__", "__main__")],
+            ignoreExceptions = [SystemExit]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "usage: python caesar.py key")
 

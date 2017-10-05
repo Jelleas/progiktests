@@ -5,8 +5,11 @@ import checkpy.assertlib as asserts
 @t.test(10)
 def water1(test):
 	def testMethod():
-		stdinArgs = [1]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [1],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		return asserts.contains(output, "12")
 
 	test.test = testMethod
@@ -15,8 +18,11 @@ def water1(test):
 @t.test(20)
 def water2(test):
 	def testMethod():
-		stdinArgs = [2]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [2],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		return asserts.contains(output, "24")
 
 	test.test = testMethod
@@ -25,8 +31,11 @@ def water2(test):
 @t.test(30)
 def water5(test):
 	def testMethod():
-		stdinArgs = [5]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [5],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		return asserts.contains(output, "60")
 
 	test.test = testMethod
@@ -35,8 +44,11 @@ def water5(test):
 @t.test(40)
 def water10(test):
 	def testMethod():
-		stdinArgs = [10]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+            _fileName,
+            stdinArgs = [10],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
 		return asserts.contains(output, "120")
 
 	test.test = testMethod

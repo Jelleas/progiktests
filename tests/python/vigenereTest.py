@@ -7,8 +7,11 @@ def keya(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py", "a"]
-        stdinArgs = ["a"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["a"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "a")
 
@@ -20,8 +23,11 @@ def keybaz(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py", "baz"]
-        stdinArgs = ["barfoo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["barfoo"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "caqgon")
 
@@ -33,8 +39,11 @@ def keyBaZ(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py", "BaZ"]
-        stdinArgs = ["BaRFoo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["BaRFoo"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "CaQGon")
 
@@ -46,8 +55,11 @@ def keyBAZ(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py", "BAZ"]
-        stdinArgs = ["BARFOO"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["BARFOO"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "CAQGON")
 
@@ -59,8 +71,11 @@ def weirdCharacters(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py", "baz"]
-        stdinArgs = ["world!$?"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["world!$?"],
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "xoqmd!$?")
 
@@ -72,8 +87,12 @@ def invalidInput(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py"]
-        stdinArgs = ["foo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["foo"],
+            overwriteAttributes = [("__name__", "__main__")],
+            ignoreExceptions = [SystemExit]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "usage: python vigenere.py keyword")
 
@@ -85,8 +104,12 @@ def tooMuchInput(test):
     def testMethod():
         import sys
         sys.argv = ["vigenere.py", "foo", "bar"]
-        stdinArgs = ["foo"]
-        output = lib.outputOf(_fileName, stdinArgs)
+        output = lib.outputOf(
+            _fileName,
+            stdinArgs = ["foo"],
+            overwriteAttributes = [("__name__", "__main__")],
+            ignoreExceptions = [SystemExit]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line, "usage: python vigenere.py keyword")
 

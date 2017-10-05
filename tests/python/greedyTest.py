@@ -5,8 +5,11 @@ import checkpy.assertlib as asserts
 @t.test(0)
 def yields41(test):
 	def testMethod():
-		stdinArgs = [0.41]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [0.41],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(4, line)
 
@@ -16,8 +19,11 @@ def yields41(test):
 @t.test(10)
 def yields1(test):
 	def testMethod():
-		stdinArgs = [0.01]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [0.01],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(1, line)
 
@@ -27,8 +33,11 @@ def yields1(test):
 @t.test(20)
 def yields15(test):
 	def testMethod():
-		stdinArgs = [0.15]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [0.15],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(2, line)
 
@@ -38,8 +47,11 @@ def yields15(test):
 @t.test(30)
 def yields160(test):
 	def testMethod():
-		stdinArgs = [1.60]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [1.60],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(7, line)
 
@@ -49,8 +61,11 @@ def yields160(test):
 @t.test(40)
 def yields2300(test):
 	def testMethod():
-		stdinArgs = [23]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [23],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(92, line)
 
@@ -60,8 +75,11 @@ def yields2300(test):
 @t.test(50)
 def yields420(test):
 	def testMethod():
-		stdinArgs = [4.20]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [4.20],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(18, line)
 
@@ -71,8 +89,11 @@ def yields420(test):
 @t.test(60)
 def rejectNegative(test):
 	def testMethod():
-		stdinArgs = [-1, 0.01]
-		output = lib.outputOf(_fileName, stdinArgs)
+		output = lib.outputOf(
+			_fileName,
+			stdinArgs = [-1, 0.01],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
 		line = lib.getLine(output, 0)
 		return asserts.numberOnLine(1, line)
 

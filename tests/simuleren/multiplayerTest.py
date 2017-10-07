@@ -21,7 +21,7 @@ def correct0(test):
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
-		return asserts.numberOnLine(0.25, line, deviation = 0.15)
+		return asserts.numberOnLine(0.25, line, deviation = 0.20)
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of tiles that player 1 owns over player 2"

@@ -23,6 +23,20 @@ def throwNums(test):
 	test.test = testMethod
 	test.description = lambda : "throw() returns only the numbers 2 to 12"
 
+@t.test(15)
+def throwEvenDist(test):
+	def testMethod():
+		throw = lib.getFunction("throw", _fileName)
+		throws = [throw() for i in range(100000)]
+		dist = [0] * 13
+		for i, t in enumerate(throws):
+			if 0 <= i < 13:
+				dist[i] += 1
+		return dist[7] * 3 > dist[2]
+
+	test.test = testMethod
+	test.description = lambda : "throw() returns some occurences (7) more than others (2)"
+
 @t.test(20)
 def possessionType(test):
 	def testMethod():

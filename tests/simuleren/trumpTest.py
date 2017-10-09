@@ -66,7 +66,7 @@ def possessionKeys(test):
 			'waterleiding': False, 'lange poten': False,
 			'hofplein': False, 'blaak': False,
 			'coolsingel': False, 'station oost': False,
-			'leidschestraat': False, 'klaverstraat': False
+			'leidschestraat': False, 'kalverstraat': False
 		}
 		return asserts.exact(possession(monopoly.Board()).keys(), correct.keys())
 

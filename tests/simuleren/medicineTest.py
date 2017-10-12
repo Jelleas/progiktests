@@ -61,7 +61,7 @@ def simulateAvg(test):
 
 	test.test = testMethod
 	test.description = lambda : "simulate(viruses, 0.1, 0.1, 0.5, 100)) is correct"
-	test.timeout = lambda : 30
+	test.timeout = lambda : 60
 
 @t.test(60)
 def experimentCorrect(test):
@@ -72,4 +72,4 @@ def experimentCorrect(test):
 
 	test.test = testMethod
 	test.description = lambda : "experiment() is correct"
-	test.timeout = lambda : 30
+	test.timeout = lambda : 60

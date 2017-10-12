@@ -60,16 +60,16 @@ def simulateAvg(test):
 		return asserts.between(avg, 50, 75)
 
 	test.test = testMethod
-	test.description = lambda : "simulate(viruses, 0.25, 0.1, 0.5, 100)) is correct"
-	test.timeout = lambda : 20
+	test.description = lambda : "simulate(viruses, 0.1, 0.1, 0.5, 100)) is correct"
+	test.timeout = lambda : 30
 
 @t.test(60)
 def experimentCorrect(test):
 	def testMethod():
 		experiment = lib.getFunction("experiment", _fileName)
 		avg = experiment(100)
-		return asserts.between(avg, 55, 80)
+		return asserts.between(avg, 33, 99)
 
 	test.test = testMethod
 	test.description = lambda : "experiment() is correct"
-	test.timeout = lambda : 20
+	test.timeout = lambda : 30

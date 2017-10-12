@@ -17,7 +17,7 @@ def generateVirusElements(test):
 		generateVirus = lib.getFunction("generateVirus", _fileName)
 		pairs = "".join([generateVirus(10) for _ in range(1000)])
 		return asserts.containsOnly(pairs, "AGTC")
-			   
+
 	test.test = testMethod
 	test.description = lambda : "generateVirus() produces viruses consisting only of A, T, G and C"
 
@@ -28,7 +28,7 @@ def mutateElements(test):
 		viruses = ["GGGG", "AAAA", "TTTT", "GGGG", "ATGC"] * 100
 		pairs = "".join([mutate(v) for v in viruses])
 		return asserts.containsOnly(pairs, "AGTC")
-			   
+
 	test.test = testMethod
 	test.description = lambda : "mutate() produces viruses consisting only of A, T, G and C"
 
@@ -37,7 +37,7 @@ def mutateLength(test):
 	def testMethod():
 		mutate = lib.getFunction("mutate", _fileName)
 		return all(asserts.sameLength(mutate("A" * i), "A" * i) for i in range(1, 100))
-			   
+
 	test.test = testMethod
 	test.description = lambda : "mutate() produces viruses of the same length as the parent"
 
@@ -67,7 +67,7 @@ def dontKillYourOwn(test):
 		kill = lib.getFunction("kill", _fileName)
 		viruses = ["GGGG", "AAAA", "TTTT", "GGGG", "ATGC"] * 20
 		kill(viruses, .5)
-		return asserts.sameLength(viruses, ["GGGG", "AAAA", "TTTT", "GGGG", "ATGC"] * 20) 
+		return asserts.sameLength(viruses, ["GGGG", "AAAA", "TTTT", "GGGG", "ATGC"] * 20)
 
 	test.test = testMethod
 	test.description = lambda : "kill() does not modify the list of viruses it accepts as argument"
@@ -99,7 +99,7 @@ def reproduceAvg(test):
 		reproduce = lib.getFunction("reproduce", _fileName)
 		viruses = ["GGGG", "AAAA", "TTTT", "GGGG", "ATGC"] * 20
 		n = 1000
-		avgPopSize = sum(len(reproduce(viruses[:], 0.25, 0.50)) for _ in range(n)) / n 
+		avgPopSize = sum(len(reproduce(viruses[:], 0.25, 0.50)) for _ in range(n)) / n
 		return asserts.between(avgPopSize, 145, 155)
 
 	test.test = testMethod
@@ -147,3 +147,4 @@ def simulateAvg(test):
 
 	test.test = testMethod
 	test.description = lambda : "simulate(viruses, 0.25, 0.1, 0.5, 100)) is correct"
+	test.timeout = lambda : 30

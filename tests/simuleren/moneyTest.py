@@ -25,6 +25,7 @@ def correct0(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws for 0 starting money"
+	test.timeout = lambda : 30
 
 @t.test(10)
 def correct500(test):
@@ -38,6 +39,7 @@ def correct500(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws for 500 starting money"
+	test.timeout = lambda : 30
 
 @t.test(20)
 def correct1000(test):
@@ -51,6 +53,7 @@ def correct1000(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws for 1000 starting money"
+	test.timeout = lambda : 30
 
 @t.test(30)
 def correct1500(test):
@@ -64,6 +67,7 @@ def correct1500(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws for 1500 starting money"
+	test.timeout = lambda : 30
 
 @t.test(40)
 def correct2000(test):
@@ -77,6 +81,7 @@ def correct2000(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws for 2000 starting money"
+	test.timeout = lambda : 30
 
 @t.test(50)
 def correct2500(test):
@@ -90,6 +95,7 @@ def correct2500(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws for 2500 starting money"
+	test.timeout = lambda : 30
 
 @t.test(100)
 def plotsGraph(test):

@@ -95,3 +95,4 @@ def correct(test):
 
 	test.test = testMethod
 	test.description = lambda : "prints the correct number of throws to buy everything"
+	test.timeout = lambda : 30

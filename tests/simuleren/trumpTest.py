@@ -68,7 +68,7 @@ def possessionKeys(test):
 			'coolsingel': False, 'station oost': False,
 			'leidschestraat': False, 'kalverstraat': False
 		}
-		return asserts.exact(possession(monopoly.Board()).keys(), correct.keys())
+		return asserts.exact(set(possession(monopoly.Board()).keys()), set(correct.keys()))
 
 	test.test = testMethod
 	test.description = lambda : "possession() returns a dictionary with the correct keys"

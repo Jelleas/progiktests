@@ -1,7 +1,6 @@
 import checkpy.tests as t
 import checkpy.lib as lib
 import checkpy.assertlib as asserts
-import checkpy.exception as exception
 import re
 
 @t.test(10)

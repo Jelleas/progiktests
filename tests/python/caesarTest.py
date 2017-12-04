@@ -1,7 +1,6 @@
 import checkpy.tests as t
 import checkpy.lib as lib
 import checkpy.assertlib as asserts
-import checkpy.exception as exception
 
 @t.test(0)
 def key1(test):

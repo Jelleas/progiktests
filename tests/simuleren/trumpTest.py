@@ -2,7 +2,6 @@ import checkpy.tests as t
 import checkpy.lib as lib
 import checkpy.assertlib as asserts
 
-
 @t.test(0)
 def throwAvg(test):
 	def testMethod():
@@ -29,10 +28,10 @@ def throwEvenDist(test):
 		throw = lib.getFunction("throw", _fileName)
 		throws = [throw() for i in range(100000)]
 		dist = [0] * 13
-		for i, t in enumerate(throws):
-			if 0 <= i < 13:
-				dist[i] += 1
-		return dist[7] * 3 > dist[2]
+		for t in throws:
+			if 0 <= t < 13:
+				dist[t] += 1
+		return (dist[2] * 3) < dist[7] and dist[2] != 0
 
 	test.test = testMethod
 	test.description = lambda : "throw() returns some occurences (7) more than others (2)"

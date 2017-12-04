@@ -99,8 +99,8 @@ def correct2500(test):
 
 @t.test(100)
 def plotsGraph(test):
-	test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "plot", "show")
-	test.description = lambda : "plots and shows a graph"
+	test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "plot")
+	test.description = lambda : "plots a graph"
 
 @t.test(110)
 def hasLabels(test):

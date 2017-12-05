@@ -5,10 +5,9 @@ import checkpy.assertlib as asserts
 @t.test(0)
 def keya(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py", "a"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py", "a"],
             stdinArgs = ["a"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -21,10 +20,9 @@ def keya(test):
 @t.test(10)
 def keybaz(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py", "baz"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py", "baz"],
             stdinArgs = ["barfoo"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -37,10 +35,9 @@ def keybaz(test):
 @t.test(20)
 def keyBaZ(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py", "BaZ"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py", "BaZ"],
             stdinArgs = ["BaRFoo"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -53,10 +50,9 @@ def keyBaZ(test):
 @t.test(30)
 def keyBAZ(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py", "BAZ"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py", "BAZ"],
             stdinArgs = ["BARFOO"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -69,10 +65,9 @@ def keyBAZ(test):
 @t.test(40)
 def weirdCharacters(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py", "baz"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py", "baz"],
             stdinArgs = ["world!$?"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -85,10 +80,9 @@ def weirdCharacters(test):
 @t.test(50)
 def invalidInput(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py"],
             stdinArgs = ["foo"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
@@ -102,10 +96,9 @@ def invalidInput(test):
 @t.test(60)
 def tooMuchInput(test):
     def testMethod():
-        import sys
-        sys.argv = ["vigenere.py", "foo", "bar"]
         output = lib.outputOf(
             _fileName,
+            argv = ["vigenere.py", "foo", "bar"],
             stdinArgs = ["foo"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]

@@ -5,10 +5,9 @@ import checkpy.assertlib as asserts
 @t.test(0)
 def findsBegin(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "28", "29", "30"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "28", "29", "30"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -20,10 +19,9 @@ def findsBegin(test):
 @t.test(10)
 def findsMiddle(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "27", "28", "29"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "27", "28", "29"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -35,10 +33,9 @@ def findsMiddle(test):
 @t.test(20)
 def findsEnd(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "27", "28", "29"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "27", "28", "29"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -50,10 +47,9 @@ def findsEnd(test):
 @t.test(30)
 def findsLeftMiddle(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "27", "28", "29", "30"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "27", "28", "29", "30"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -65,10 +61,9 @@ def findsLeftMiddle(test):
 @t.test(40)
 def findsRightMiddle(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "26", "27", "28", "29"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "26", "27", "28", "29"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -80,10 +75,9 @@ def findsRightMiddle(test):
 @t.test(50)
 def findsEnd4(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "25", "26", "27", "28"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "25", "26", "27", "28"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -95,10 +89,9 @@ def findsEnd4(test):
 @t.test(60)
 def notFind3(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "25", "26", "27"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "25", "26", "27"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -109,11 +102,10 @@ def notFind3(test):
 
 @t.test(70)
 def notFind4(test):
-	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "25", "26", "27", "29"]
+	def testMethod(): 
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "25", "26", "27", "29"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -125,10 +117,9 @@ def notFind4(test):
 @t.test(80)
 def findsRandom(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py", "28", "30", "27", "28", "26"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "30", "27", "28", "26"],
 			overwriteAttributes = [("__name__", "__main__")]
 		)
 		line = lib.getLine(output, 0)
@@ -138,12 +129,25 @@ def findsRandom(test):
 	test.description = lambda : "finds 28 in 30,27,28,26"
 
 @t.test(90)
-def tooFewArguments(test):
+def findsReverse(test):
 	def testMethod():
-		import sys
-		sys.argv = ["find.py"]
 		output = lib.outputOf(
 			_fileName,
+			argv = ["find.py", "28", "30", "29", "28", "27"],
+			overwriteAttributes = [("__name__", "__main__")]
+		)
+		line = lib.getLine(output, 0)
+		return asserts.contains(line, "Found the needle")
+
+	test.test = testMethod
+	test.description = lambda : "finds 28 in 30,29,28,27"
+
+@t.test(100)
+def tooFewArguments(test):
+	def testMethod():
+		output = lib.outputOf(
+			_fileName,
+			argv = ["find.py"],
 			overwriteAttributes = [("__name__", "__main__")],
 			ignoreExceptions = [SystemExit]
 		)

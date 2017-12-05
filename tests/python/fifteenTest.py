@@ -6,10 +6,9 @@ import re
 @t.test(0)
 def shows3x3(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py", "3"]
         output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py", "3"],
             stdinArgs = ["-1"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
@@ -29,10 +28,9 @@ def shows3x3(test):
 @t.test(10)
 def shows4x4(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py", "4"]
         output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py", "4"],
             stdinArgs = ["-1"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
@@ -53,10 +51,9 @@ def shows4x4(test):
 @t.test(40)
 def solves3x3(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py", "3"]
         stdinArgs = output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py", "3"],
             stdinArgs = ["3","4","1","2","5","8","7","6","4","1","2","5","8","7","6","4","1","2","4","1","2","3","5","4","7","6","1","2","3","7","4","8","6","4","8","5","7","8","5","6","4","5","6","7","8","6","5","4","7","8"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
@@ -71,10 +68,9 @@ def solves3x3(test):
 @t.test(50)
 def solves4x4(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py", "4"]
         output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py", "4"],
             stdinArgs = ["4","5","6","1","2","4","5","6","1","2","3","7","11","10","9","1","2","3","4","5","6","8","1","2","3","4","7","11","10","9","14","13","12","1","2","3","4","14","13","12","1","2","3","4","14","13","12","1","2","3","4","12","9","15","1","2","3","4","12","9","13","14","9","13","14","7","5","9","13","14","15","10","11","5","9","13","7","11","5","9","13","7","11","15","10","5","9","13","15","11","8","6","7","8","14","12","6","7","8","14","12","6","7","8","14","15","11","10","6","7","8","12","15","11","10","15","11","14","12","11","15","10","14","15","11","12"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
@@ -89,10 +85,9 @@ def solves4x4(test):
 @t.test(60)
 def invalidInput(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py"]
         output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
         )
@@ -105,10 +100,9 @@ def invalidInput(test):
 @t.test(70)
 def argv1BiggerThan9(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py", "10"]
         output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py", "10"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
         )
@@ -121,10 +115,9 @@ def argv1BiggerThan9(test):
 @t.test(80)
 def argv1SmallerThan0(test):
     def testMethod():
-        import sys
-        sys.argv = ["fifteen.py", "-1"]
         output = lib.outputOf(
             _fileName,
+            argv = ["fifteen.py", "-1"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]
         )

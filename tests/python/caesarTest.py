@@ -5,10 +5,9 @@ import checkpy.assertlib as asserts
 @t.test(0)
 def key1(test):
     def testMethod():
-        import sys
-        sys.argv = ["caesar.py", "1"]
         output = lib.outputOf(
             _fileName,
+            argv = ["caesar.py", "1"],
             stdinArgs = ["a"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -21,10 +20,9 @@ def key1(test):
 @t.test(10)
 def key23(test):
     def testMethod():
-        import sys
-        sys.argv = ["caesar.py", "23"]
         output = lib.outputOf(
             _fileName,
+            argv = ["caesar.py", "23"],
             stdinArgs = ["barfoo"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -37,10 +35,9 @@ def key23(test):
 @t.test(20)
 def key3(test):
     def testMethod():
-        import sys
-        sys.argv = ["caesar.py", "3"]
         output = lib.outputOf(
             _fileName,
+            argv = ["caesar.py", "3"],
             stdinArgs = ["BARFOO"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -53,10 +50,9 @@ def key3(test):
 @t.test(30)
 def key4(test):
     def testMethod():
-        import sys
-        sys.argv = ["caesar.py", "4"]
         output = lib.outputOf(
             _fileName,
+            argv = ["caesar.py", "4"],
             stdinArgs = ["BaRFoo"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -69,10 +65,9 @@ def key4(test):
 @t.test(40)
 def key65(test):
     def testMethod():
-        import sys
-        sys.argv = ["caesar.py", "65"]
         output = lib.outputOf(
             _fileName,
+            argv = ["caesar.py", "65"],
             stdinArgs = ["barfoo"],
             overwriteAttributes = [("__name__", "__main__")]
         )
@@ -85,10 +80,9 @@ def key65(test):
 @t.test(50)
 def invalidInput(test):
     def testMethod():
-        import sys
-        sys.argv = ["caesar.py"]
         output = lib.outputOf(
             _fileName,
+            argv = ["caesar.py"],
             stdinArgs = ["foo"],
             overwriteAttributes = [("__name__", "__main__")],
             ignoreExceptions = [SystemExit]

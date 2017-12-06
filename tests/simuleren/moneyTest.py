@@ -5,6 +5,8 @@ import importlib
 
 def before():
 	try:
+		import matplotlib
+		matplotlib.use("Agg")
 		import matplotlib.pyplot as plt
 		plt.switch_backend("Agg")
 		lib.neutralizeFunction(plt.pause)
@@ -18,7 +20,7 @@ def after():
 		importlib.reload(plt)
 	except ImportError:
 		pass
-		
+
 @t.test(0)
 def correct0(test):
 	def testMethod():

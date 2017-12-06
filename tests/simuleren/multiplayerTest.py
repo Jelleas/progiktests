@@ -4,14 +4,20 @@ import checkpy.assertlib as asserts
 import importlib
 
 def before():
-	import matplotlib.pyplot as plt
-	plt.switch_backend("Agg")
-	lib.neutralizeFunction(plt.pause)
+	try:
+		import matplotlib.pyplot as plt
+		plt.switch_backend("Agg")
+		lib.neutralizeFunction(plt.pause)
+	except ImportError:
+		pass
 
 def after():
-	import matplotlib.pyplot as plt
-	plt.switch_backend("TkAgg")
-	importlib.reload(plt)
+	try:
+		import matplotlib.pyplot as plt
+		plt.switch_backend("TkAgg")
+		importlib.reload(plt)
+	except ImportError:
+		pass
 
 @t.test(0)
 def correct0(test):

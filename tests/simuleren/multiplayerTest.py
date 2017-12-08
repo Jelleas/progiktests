@@ -51,7 +51,8 @@ def correct1(test):
 
 @t.test(100)
 def plotsGraph(test):
-	test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "plot")
+	test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "plot") or \
+		asserts.fileContainsFunctionCalls(_fileName, "bar")
 	test.description = lambda : "plots a graph"
 
 @t.test(110)

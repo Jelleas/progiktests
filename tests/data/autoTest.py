@@ -26,7 +26,7 @@ def correctDistance(test):
     def testMethod():
         output = lib.outputOf(_fileName)
         line = lib.getLine(output, 0)
-        return asserts.numberOnLine(10.86, line, deviation = 0.01)
+        return asserts.numberOnLine(10.86, line, deviation = 0.02)
 
     test.test = testMethod
     test.description = lambda : "prints the distance travelled"
@@ -36,7 +36,7 @@ def correctSecondsFasterThan50(test):
     def testMethod():
         output = lib.outputOf(_fileName)
         line = lib.getLine(output, 0)
-        return asserts.numberOnLine(10.86, line, deviation = 0.01)
+        return asserts.numberOnLine(10.86, line, deviation = 0.02)
 
     test.test = testMethod
     test.description = lambda : "prints the number of seconds that the car drives faster than 50km/h"

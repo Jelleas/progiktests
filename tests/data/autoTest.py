@@ -24,7 +24,10 @@ def after():
 @t.test(0)
 def correctDistance(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.numberOnLine(10.86, line, deviation = 0.02)
 
@@ -34,7 +37,10 @@ def correctDistance(test):
 @t.test(10)
 def correctSecondsFasterThan50(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.numberOnLine(10.86, line, deviation = 0.02)
 

@@ -24,7 +24,10 @@ def after():
 @t.test(0)
 def correctMaxTemp(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.numberOnLine(36.8, line)
 
@@ -34,7 +37,10 @@ def correctMaxTemp(test):
 @t.test(10)
 def correctDayMaxTemp(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 0)
         return asserts.contains(line.lower(), "27 jun 1947")
 
@@ -44,7 +50,10 @@ def correctDayMaxTemp(test):
 @t.test(20)
 def correctMinTemp(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 1)
         return asserts.numberOnLine(-11.3, line)
 
@@ -54,7 +63,10 @@ def correctMinTemp(test):
 @t.test(30)
 def correctDayMinTemp(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 1)
         return asserts.contains(line.lower(), "20 dec 1938")
 
@@ -64,7 +76,10 @@ def correctDayMinTemp(test):
 @t.test(40)
 def correctLongestFreezingPeriod(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 2)
         return asserts.numberOnLine(21, line)
 
@@ -74,7 +89,10 @@ def correctLongestFreezingPeriod(test):
 @t.test(50)
 def correctLastDayFreezingPeriod(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 2)
         return asserts.contains(line.lower(), "24 feb 1947")
 
@@ -100,7 +118,10 @@ def hasTitle(test):
 @t.test(90)
 def correctYearHeatwave(test):
     def testMethod():
-        output = lib.outputOf(_fileName)
+        output = lib.outputOf(
+            _fileName,
+            overwriteAttributes = [("__name__", "__main__")]
+        )
         line = lib.getLine(output, 3)
         return asserts.numberOnLine(1911, line)
 

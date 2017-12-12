@@ -41,8 +41,8 @@ def correctSecondsFasterThan50(test):
             _fileName,
             overwriteAttributes = [("__name__", "__main__")]
         )
-        line = lib.getLine(output, 0)
-        return asserts.numberOnLine(10.86, line, deviation = 0.02)
+        line = lib.getLine(output, 1)
+        return asserts.numberOnLine(330, line, deviation = 0.1)
 
     test.test = testMethod
     test.description = lambda : "prints the number of seconds that the car drives faster than 50km/h"
@@ -55,10 +55,10 @@ def showsGraph(test):
 
 @t.test(30)
 def hasLabels(test):
-	test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "xlabel", "ylabel")
-	test.description = lambda : "graph has labels along the x-axis and y-axis"
+    test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "xlabel", "ylabel")
+    test.description = lambda : "graph has labels along the x-axis and y-axis"
 
 @t.test(40)
 def hasTitle(test):
-	test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "title")
-	test.description = lambda : "graph has a title"
+    test.test = lambda : asserts.fileContainsFunctionCalls(_fileName, "title")
+    test.description = lambda : "graph has a title"

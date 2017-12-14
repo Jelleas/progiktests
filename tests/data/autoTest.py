@@ -33,6 +33,7 @@ def correctDistance(test):
 
     test.test = testMethod
     test.description = lambda : "prints the distance travelled"
+    test.timeout = lambda : 30
 
 @t.test(10)
 def correctSecondsFasterThan50(test):
@@ -46,6 +47,7 @@ def correctSecondsFasterThan50(test):
 
     test.test = testMethod
     test.description = lambda : "prints the number of seconds that the car drives faster than 50km/h"
+    test.timeout = lambda : 30
 
 @t.test(20)
 def showsGraph(test):

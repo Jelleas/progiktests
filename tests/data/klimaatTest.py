@@ -33,6 +33,7 @@ def correctMaxTemp(test):
 
     test.test = testMethod
     test.description = lambda : "prints the maximum temperature measured"
+    test.timeout = lambda : 30
 
 @t.test(10)
 def correctDayMaxTemp(test):
@@ -46,6 +47,7 @@ def correctDayMaxTemp(test):
 
     test.test = testMethod
     test.description = lambda : "prints the day of the maximum temperature"
+    test.timeout = lambda : 30
 
 @t.test(20)
 def correctMinTemp(test):
@@ -59,6 +61,7 @@ def correctMinTemp(test):
 
     test.test = testMethod
     test.description = lambda : "prints the minimum temperature measured"
+    test.timeout = lambda : 30
 
 @t.test(30)
 def correctDayMinTemp(test):
@@ -72,6 +75,7 @@ def correctDayMinTemp(test):
 
     test.test = testMethod
     test.description = lambda : "prints the day of the minimum temperature"
+    test.timeout = lambda : 30
 
 @t.test(40)
 def correctLongestFreezingPeriod(test):
@@ -85,6 +89,7 @@ def correctLongestFreezingPeriod(test):
 
     test.test = testMethod
     test.description = lambda : "prints the length of the longest freezing period"
+    test.timeout = lambda : 30
 
 @t.test(50)
 def correctLastDayFreezingPeriod(test):
@@ -98,6 +103,7 @@ def correctLastDayFreezingPeriod(test):
 
     test.test = testMethod
     test.description = lambda : "prints the last day of the longest freezing period"
+    test.timeout = lambda : 30
 
 @t.test(60)
 def showsGraph(test):
@@ -127,3 +133,4 @@ def correctYearHeatwave(test):
 
     test.test = testMethod
     test.description = lambda : "prints the year of the first heatwave"
+    test.timeout = lambda : 30
